@@ -9,8 +9,9 @@ const onGenerateSubmit = async (e) => {
 
   const url = document.getElementById("urlInput").value;
   const size = document.getElementById("size").value;
+  const color = document.getElementById("color").value;
 
-  console.log(url, size);
+  console.log(url, size, color);
 
   if (url === "") {
     alert("Please enter a URL");
@@ -20,23 +21,24 @@ const onGenerateSubmit = async (e) => {
       showSpinner();
       await delay(1000);
       hideSpinner();
-      await generateQRCode(url, size);
+      await generateQRCode(url, size, color);
       await delay(50);
       const saveUrl = qr.querySelector("img").src;
-      createSaveBtn(saveUrl, size);
+      createSaveBtn(saveUrl, size, color);
     } catch (error) {
       console.error("Error generator QR code: ", error);
     }
   }
 };
 
-const generateQRCode = (url, size) => {
+const generateQRCode = (url, size, color) => {
   return new Promise((resolve, reject) => {
     try {
       const qrcode = new QRCode(qr, {
         text: url,
         width: size,
         height: size,
+        colorDark: color,
         correctLevel: QRCode.CorrectLevel.H,
       });
       resolve();
@@ -57,12 +59,12 @@ const hideSpinner = () => {
   document.getElementById("spinner").style.display = "none";
 };
 
-const createSaveBtn = (saveUrl, size) => {
+const createSaveBtn = (saveUrl, size, color) => {
   const link = document.createElement("a");
   link.id = "save-link";
   link.classList = "btn btn-success my-5";
   link.href = saveUrl;
-  link.download = `qrcode_${size}`;
+  link.download = `qrcode_${size}_${color}`;
   link.innerHTML = "Save QR Code";
   qrOutput.appendChild(link);
 };
