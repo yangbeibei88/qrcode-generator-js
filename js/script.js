@@ -1,4 +1,5 @@
 const form = document.getElementById("generate-qr-form");
+const qrOutput = document.getElementById("qr-output");
 const qr = document.getElementById("qrcode");
 
 const onGenerateSubmit = (e) => {
@@ -19,6 +20,10 @@ const onGenerateSubmit = (e) => {
     setTimeout(() => {
       hideSpinner();
       generateQRCode(url, size);
+      setTimeout(() => {
+        const saveUrl = qr.querySelector("img").src;
+        createSaveBtn(saveUrl);
+      });
     }, 1000);
   }
 };
@@ -39,8 +44,21 @@ const hideSpinner = () => {
   document.getElementById("spinner").style.display = "none";
 };
 
-const clearUI = () => {
-  qr.innerHTML = "";
+const createSaveBtn = (saveUrl) => {
+  const link = document.createElement("a");
+  link.id = "save-link";
+  link.classList = "btn btn-success my-5";
+  link.href = saveUrl;
+  link.download = "qrcode";
+  link.innerHTML = "Save QR Code";
+  qrOutput.appendChild(link);
 };
 
+const clearUI = () => {
+  qr.innerHTML = "";
+  const saveLink = document.getElementById("save-link");
+  if (saveLink) saveLink.remove();
+};
+
+hideSpinner();
 form.addEventListener("submit", onGenerateSubmit);

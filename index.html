@@ -10,11 +10,11 @@
     rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
-  <style>
+  <!-- <style>
     #spinner {
       display: none;
     }
-  </style>
+  </style> -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -41,67 +41,75 @@
     </nav>
   </header>
   <main>
-    <div class="container">
-      <div
-        class="row my-4 justify-content-center">
+    <section id="qr-generate-section">
+      <div class="container">
         <div
-          class="col-12 col-md-4 text-center mb-3">
-          <img src="img/qr-code.svg"
-            alt="mobile-qr-icon" class="w-50">
-        </div>
-        <div class="col-12 col-md-8 text-center">
-          <h1>QR Code Generator</h1>
-          <p>Enter your URL below to generate and
-            download a QR code.</p>
-          <form id="generate-qr-form"
-            class="mb-5">
-            <div class="mb-3">
-              <label for="urlInput"
-                class="form-label">URL:</label>
-              <input type="url" name="urlInput"
-                id="urlInput" class="form-control"
-                placeholder="Enter a URL">
-            </div>
-            <div class="mb-3">
-              <select name="size" id="size"
-                class="form-select">
-                <option value="100">100x100
-                </option>
-                <option value="200">200x200
-                </option>
-                <option value="300" selected>
-                  300x300
-                </option>
-                <option value="400">400x400
-                </option>
-                <option value="500">500x500
-                </option>
-                <option value="600">600x600
-                </option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <button type="type"
-                class="btn btn-success w-100">Generate
-                QR Code</button>
-            </div>
-          </form>
-          <!-- Generate QR C -->
-          <div class="container">
-            <!-- spinner -->
-            <div id="spinner"
-              class="spinner-border"
-              role="status">
-              <span
-                class="visually-hidden">Loading...</span>
-            </div>
-            <!-- QR code output -->
-            <div id="qrcode">
-            </div>
+          class="row my-4 justify-content-center">
+          <div
+            class="col-12 col-md-4 text-center mb-3">
+            <img src="img/qr-code.svg"
+              alt="mobile-qr-icon" class="w-50">
+          </div>
+          <div class="col-12 col-md-8">
+            <h1>QR Code Generator</h1>
+            <p>Enter your URL below to generate
+              and
+              download a QR code.</p>
+            <form id="generate-qr-form"
+              class="mb-5">
+              <div class="input-group mb-3">
+                <label for="urlInput"
+                  class="input-group-text">URL</label>
+                <input type="url" name="urlInput"
+                  id="urlInput"
+                  class="form-control"
+                  placeholder="Enter a URL">
+              </div>
+              <div class="input-group mb-3">
+                <label for="size"
+                  class="input-group-text">Size</label>
+                <select name="size" id="size"
+                  class="form-select">
+                  <option value="100">100x100
+                  </option>
+                  <option value="200">200x200
+                  </option>
+                  <option value="300" selected>
+                    300x300
+                  </option>
+                  <option value="400">400x400
+                  </option>
+                  <option value="500">500x500
+                  </option>
+                  <option value="600">600x600
+                  </option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <button type="type"
+                  class="btn btn-dark w-100">Generate
+                  QR Code</button>
+              </div>
+            </form>
+            <!-- Generate QR -->
+            <section id="qr-output">
+              <div class="container">
+                <!-- spinner -->
+                <div id="spinner"
+                  class="spinner-border"
+                  role="status">
+                  <span
+                    class="visually-hidden">Loading...</span>
+                </div>
+                <!-- QR code output -->
+                <div id="qrcode">
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 </body>
 
