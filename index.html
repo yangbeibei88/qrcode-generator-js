@@ -10,6 +10,11 @@
     rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous">
+  <style>
+    #spinner {
+      display: none;
+    }
+  </style>
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -38,16 +43,18 @@
   <main>
     <div class="container">
       <div
-        class="row my-4 justify-content-center align-items-center">
-        <div class="col-12 col-md-4">
+        class="row my-4 justify-content-center">
+        <div
+          class="col-12 col-md-4 text-center mb-3">
           <img src="img/qr-code.svg"
             alt="mobile-qr-icon" class="w-50">
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-8 text-center">
           <h1>QR Code Generator</h1>
           <p>Enter your URL below to generate and
             download a QR code.</p>
-          <form id="generate-qr-form">
+          <form id="generate-qr-form"
+            class="mb-5">
             <div class="mb-3">
               <label for="urlInput"
                 class="form-label">URL:</label>
@@ -79,20 +86,19 @@
                 QR Code</button>
             </div>
           </form>
-        </div>
-      </div>
-      <!-- Generate QR C -->
-      <div
-        class="row justify-content-center align-items-center">
-        <!-- spinner -->
-        <div id="spinner" class="spinner-border"
-          role="status">
-          <span
-            class="visually-hidden">Loading...</span>
-        </div>
-        <!-- QR code output -->
-        <div id="qrcode" class="m-auto">
-
+          <!-- Generate QR C -->
+          <div class="container">
+            <!-- spinner -->
+            <div id="spinner"
+              class="spinner-border"
+              role="status">
+              <span
+                class="visually-hidden">Loading...</span>
+            </div>
+            <!-- QR code output -->
+            <div id="qrcode">
+            </div>
+          </div>
         </div>
       </div>
     </div>
